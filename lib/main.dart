@@ -43,12 +43,11 @@ class RestaurantFinder extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-     /* home: MainScreen(),*/
+      /* home: MainScreen(),*/
       home: CounterPage(),
     );
   }
 }
-
 
 class CounterPage extends StatefulWidget {
   @override
@@ -60,7 +59,7 @@ class _CounterPageState extends State<CounterPage> {
   final StreamController<int> _streamController = StreamController<int>();
 
   @override
-  void dispose(){
+  void dispose() {
     _streamController.close();
     super.dispose();
   }
@@ -73,14 +72,13 @@ class _CounterPageState extends State<CounterPage> {
         child: StreamBuilder<int>(
             stream: _streamController.stream,
             initialData: _counter,
-            builder: (BuildContext context, AsyncSnapshot<int> snapshot){
+            builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
               return Text('You hit me: ${snapshot.data} times');
-            }
-        ),
+            }),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: (){
+        onPressed: () {
           _streamController.sink.add(++_counter);
         },
       ),
